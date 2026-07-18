@@ -223,6 +223,7 @@ void loop() {
 
       break;
 
+      //Para esta versión aún le hacen faltan las diferentes caras de los OLED, las cuales no las he agregado aún en cada una de las diferentes funciones que deje como void.
 
   }
 }
