@@ -3,11 +3,11 @@
 #include <Adafruit_SSD1306.h>
 #include <Servo.h>
 
-#define SCREEN_WIDHT 128
+#define SCREEN_WIDTH 128
 #define SCREEN_HEIGHT 64
 #define OLED_RESET -1
 
-Adafruit_SSD1306 display(SCREEN_WIDHT, SCREEN_HEIGHT, OLED_RESET);
+Adafruit_SSD1306 display(SCREEN_WIDTH, SCREEN_HEIGHT, &Wire, OLED_RESET);
 
 //Pines 
 int pin_trig = 2;
@@ -51,6 +51,9 @@ int calcular_distancia() {
   long duracion = pulseIn(pin_echo, HIGH, 20000);
 
   int distancia = duracion*0.034/2;
+
+  return distancia;
+
 }
 void setup() {
   Serial.begin(9600); 
@@ -74,13 +77,48 @@ void setup() {
 
 void cara_feliz(){
 
+  display.setTextColor(SSD1306_WHITE);
+
+  // Ojo izquierdo cerrado (guiño)
+  display.drawFastHLine(25, 22, 20, SSD1306_WHITE);
+
+  // Ojo derecho abierto 
+  display.drawCircle(93, 22, 8, SSD1306_WHITE);
+  display.fillCircle(93, 22, 4, SSD1306_WHITE);
+
+  // Boca de alegría (círculo)
+  display.fillCircle(64, 38, 7, SSD1306_WHITE);
+
 }
 
 void cara_enojada(){
 
-}
+  display.setTextColor(SSD1306_WHITE);
+
+  // Cejas inclinadas
+  display.drawLine(25, 12, 45, 22, SSD1306_WHITE);  // izquierda 
+  display.drawLine(103, 12, 83, 22, SSD1306_WHITE); // derecha 
+
+  // Ojos molestos (rectángulos)
+ 
+  display.fillRect(25, 26, 15, 5, SSD1306_WHITE);  // izquierdo
+  display.fillRect(88, 26, 15, 5, SSD1306_WHITE);  // derecho
+
+  // Boca disgustada
+  display.drawLine(54, 42, 74, 38, SSD1306_WHITE);
+}  
+
 
 void cara_seria(){
+
+  display.setTextColor(SSD1306_WHITE);
+
+  // Ojos
+  display.fillCircle(35, 22, 8, SSD1306_WHITE); // izquierdo
+  display.fillCircle(93, 22, 8, SSD1306_WHITE); // derecho
+
+  // Boca (línea horizontal)
+  display.drawFastHLine(54, 38, 20, SSD1306_WHITE);
 
 }
 
@@ -121,6 +159,7 @@ void estudio(){
     }
   }
 
+  display.clearDisplay(); 
   cara_seria(); 
 
   //Calcular minutos y segundos para mostralos ordenados
@@ -147,20 +186,27 @@ void estudio(){
 
 void pausa() {
 
-  display.clearDisplay(); 
-
+  display.clearDisplay();
   cara_enojada();
 
   display.setTextSize(1);
   display.setTextColor(SSD1306_WHITE);
+  display.setCursor(10, 50);
   display.print("¡VUELVE A ESTUDIAR!");
-
   display.display(); 
 
-  //sonido de enojo
-  tone(pin_buzzer, 350, 550);
-  delay(600);
-  
+  tone(pin_buzzer, 350, 200);
+  delay(250);
+
+  int distancia = calcular_distancia();
+  delay(50);
+  distancia = calcular_distancia();
+
+  if (distancia > 0 && distancia <= distancia_max) {
+    ult_millis = millis(); 
+
+    estado_actual = ESTUDIANDO;
+  }
 }
 
 void premio(){
@@ -172,7 +218,9 @@ void premio(){
   display.setCursor(10, 50); 
   display.print("¡DULCE!");
 
-  //tocamos melodía de victoria
+  display.display();
+
+  //Tocamos melodía de victoria
   tone(pin_buzzer, 523, 150);
   delay(150);
   tone(pin_buzzer, 659, 150);
@@ -180,9 +228,11 @@ void premio(){
   tone(pin_buzzer, 784, 300);
   delay(300);
 
-  dispensador.write(170);
+  dispensador.write(angulo_dispensar);
   delay(1000);
-  dispensador.write(10);
+  dispensador.write(angulo_bloqueado);
+
+  estado_actual = ESPERA;
 
 }
 
@@ -191,7 +241,11 @@ void loop() {
   switch (estado_actual) {
 
     case ESPERA:
+
+      display.clearDisplay(); 
       cara_seria();
+      display.display();
+
       if (digitalRead(pin_touch) == HIGH) { 
         
         //Sonido de start
@@ -223,7 +277,6 @@ void loop() {
 
       break;
 
-      //Para esta versión aún le hacen faltan las diferentes caras de los OLED, las cuales no las he agregado aún en cada una de las diferentes funciones que deje como void.
-
+    
   }
 }
