@@ -22,7 +22,7 @@ int angulo_bloqueado = 10;
 int angulo_dispensar = 170; 
 
 //Variables de tiempo
-unsigned long tiempo_estudio = 1500; // cantidad de tiempo para dispensar(segundos)
+unsigned long tiempo_estudio = 1500; // cantidad de tiempo para dispensar(tiempo de la sesión(segundos))
 unsigned long tiempo_restante = tiempo_estudio;
 unsigned long ult_millis = 0; // última vez que se tomó el tiempo
 
