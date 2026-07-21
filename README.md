@@ -2,11 +2,14 @@ An interactive Pomodoro robot that dispenses sweet rewards only if you stay focu
 
 ## Materials 
 
-- Servo
-- Ultrasonic sensor
+- Arduino Nano
+- SG90 Servo
+- HC-SR04 Ultrasonic Distance Sensor
 - SSD1306 0.96 inch I2C OLED display 
 - Touch Sensor TTP223 
 - Passive Buzzer
+- 2-slot 18650 Battery Holder
+- 2 18650 Li-ion Batteries
 
 ## How to Compile 
 
