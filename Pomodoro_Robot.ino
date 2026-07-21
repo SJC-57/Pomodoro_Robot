@@ -192,7 +192,7 @@ void pausa() {
   display.setTextSize(1);
   display.setTextColor(SSD1306_WHITE);
   display.setCursor(10, 50);
-  display.print("¡VUELVE A ESTUDIAR!");
+  display.print("VUELVE A ESTUDIAR!");
   display.display(); 
 
   tone(pin_buzzer, 350, 200);
