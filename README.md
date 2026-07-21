@@ -12,8 +12,8 @@ An interactive Pomodoro robot that dispenses sweet rewards only if you stay focu
 
 1. Download and install the [Arduino IDE](https://www.arduino.cc/en/software](https://www.arduino.cc/).
 2. Install required libraries via Library Manager:
-   - 'Adafruit GFX'
-   - 'Adafruit SSD1306'
+   - 'Adafruit GFX'
+   - 'Adafruit SSD1306'
 3. Open 'Code/Pomodoro_Robot/Pomodoro_Robot.ino' in Arduino IDE.
 4. Select board: *Tools > Board > Arduino AVR Boards > Arduino Nano*.
 5. Connect the Arduino Nano via USB, choose the correct COM Port, and click *Upload*.
