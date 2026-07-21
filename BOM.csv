@@ -1,0 +1,8 @@
+Ref,Component,Description,Qty,Vendor,Price (USD),Purchase Link
+U1,Arduino Nano,"ATmega328 microcontroller board - main controller",1,Arduino (official store),$25.70,https://store-usa.arduino.cc/products/arduino-nano
+U3,HC-SR04,"Ultrasonic distance sensor - desk presence detection",1,Adafruit,$3.95,https://www.adafruit.com/product/3942
+U4,TTP223 Touch Sensor,"Capacitive touch module (Grove format) - start button",1,Seeed Studio,$4.30,https://www.seeedstudio.com/Grove-Touch-Sensor.html
+SG1,Passive Piezo Buzzer (PS1240),"Bare piezo disc",1,Adafruit,$1.50,https://www.adafruit.com/
+-,Micro Servo,"180-degree sub-micro servo (SG90-equivalent)",1,SparkFun,$12.95,https://www.sparkfun.com/servo-generic-180-rotation-sub-micro-size.html
+BT1,18650 Battery Holder,"Two-cell (2x18650) holder with wire leads",1,SparkFun,$1.95,https://www.sparkfun.com/battery-holder-2x18650-wire-leads.html
+-,18650 Li-ion Cell,"3.7V 2600mAh rechargeable cell",2,SparkFun,$9.83,https://www.sparkfun.com/lithium-ion-battery-18650-cell-2600mah.html
