@@ -6,4 +6,4 @@ Materials:
 - Ultrasonic sensor
 - SSD1306 0.96 inch I2C OLED display 
 - Touch Sensor TTP223 
-- Buzzer
+- Passive Buzzer
