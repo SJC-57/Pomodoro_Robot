@@ -10,7 +10,7 @@ An interactive Pomodoro robot that dispenses sweet rewards only if you stay focu
 
 ## How to Compile 
 
-1. Download and install the [Arduino IDE](https://www.arduino.cc/en/software](https://www.arduino.cc/).
+1. Download and install the [Arduino IDE](https://www.arduino.cc/).
 2. Install required libraries via Library Manager:
    - 'Adafruit GFX'
    - 'Adafruit SSD1306'
